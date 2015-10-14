@@ -1,6 +1,5 @@
 #A class for neural network training 
 import numpy as np 
-import matplotlib.pyplot as plt 
 from math import exp
 import cPickle
 import sys
@@ -128,7 +127,7 @@ class NeuralNet():
 		'save the weights to a cPickle file'
 		toStore = [self.v , self.w]
 		f = open(name,'wb')
-		cPickle.dump(f , toStore)
+		cPickle.dump(toStore , f)
 		f.close()
 
 	def load_weights(self,name):
@@ -136,7 +135,7 @@ class NeuralNet():
 		f = open(name,'rb')
 		self.v , self.w = cPickle.load(f)
 		f.close()
-			
+
 
 #--testing--
 f = open('iris_normalized','rb')
@@ -150,7 +149,6 @@ f.close()
 data = np.concatenate((dataset, labels), axis=1)
 
 import random
-random.seed(5)
 random.shuffle(data)
 
 dataset, labels = data[:, :4], data[:, 4:]
