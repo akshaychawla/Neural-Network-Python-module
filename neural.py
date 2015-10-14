@@ -124,6 +124,18 @@ class NeuralNet():
 		print 'Report:'
 		print 'Error Rate: {} \t Success Rate: {}'.format( float(err)*100/labels.shape[0]  , (1 - float(err)/labels.shape[0])*100 )
 
+	def save_weights(self,name):
+		'save the weights to a cPickle file'
+		toStore = [self.v , self.w]
+		f = open(name,'wb')
+		cPickle.dump(f , toStore)
+		f.close()
+
+	def load_weights(self,name):
+		'load the weights from a local stored file'
+		f = open(name,'rb')
+		self.v , self.w = cPickle.load(f)
+		f.close()
 			
 
 #--testing--
