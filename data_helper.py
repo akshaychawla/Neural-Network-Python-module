@@ -44,5 +44,16 @@ def data_normalize(dataset):
 def train_test_split(dataset, labels, ratio = 0.7):
 	'Split the dataset between training set and test set'
 
+	data = np.concatenate((dataset,labels), axis=1)
+	import random
+	random.shuffle(data)
+	rows,_  = dataset.shape
+	train_data, test_data     = dataset[:int(ratio*rows), :], dataset[int(ratio*rows):, :]
+	train_labels, test_labels = labels[:int(ratio*rows), :], labels[int(ratio*rows):, :]
+
+	return train_data,train_labels,test_data,test_labels
+	
+
+
 	
 
