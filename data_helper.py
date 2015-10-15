@@ -48,6 +48,7 @@ def train_test_split(dataset, labels, ratio = 0.7):
 	import random
 	random.shuffle(data)
 	rows,_  = dataset.shape
+	dataset, labels = data[:, :4], data[:, 4:]
 	train_data, test_data     = dataset[:int(ratio*rows), :], dataset[int(ratio*rows):, :]
 	train_labels, test_labels = labels[:int(ratio*rows), :], labels[int(ratio*rows):, :]
 

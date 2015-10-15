@@ -137,29 +137,6 @@ class NeuralNet():
 		f.close()
 
 
-#--testing--
-f = open('iris_normalized','rb')
-dataset = cPickle.load(f)
-f.close()
-
-f = open('iris_labels','rb')
-labels = cPickle.load(f)
-f.close()
-
-data = np.concatenate((dataset, labels), axis=1)
-
-import random
-random.shuffle(data)
-
-dataset, labels = data[:, :4], data[:, 4:]
-trX, teX = dataset[:100, :], dataset[100:, :]
-trY, teY = labels[:100, :], labels[100:, :]
-
-
-nn = NeuralNet(4, 10, 3)
-nn.train(trX, trY, 500)
-nn.test(teX, teY)
-
 
 
 
